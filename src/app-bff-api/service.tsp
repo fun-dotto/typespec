@@ -90,6 +90,44 @@ namespace AppBFFService {
   }
 
   @useAuth([BearerAuth, FoundationV1.FirebaseAppCheckAuth])
+  @route("/v1/registrableSubjects")
+  @tag("RegistrableSubjects")
+  interface RegistrableSubjectsV1 {
+    /**
+     * 履修登録画面用に、科目検索結果と履修登録状況・時間割をまとめて取得する
+     *
+     * 同一項目同士はOR、異なる項目同士はANDでフィルタリングされます。
+     *
+     * @param q 検索ワード
+     * @param grades 学年
+     * @param courses コース; 大学院の場合は大学院コースに読み替え
+     * @param classes クラス; 大学院の学年を選択した場合は選択できない
+     * @param classifications 学部: 専門・教養; 大学院: 専門・研究指導
+     * @param year 開講年度; 指定しない場合は今年度が選択される
+     * @param semesters 開講時期
+     * @param requirementTypes 必修・選択・選択必修
+     * @param culturalSubjectCategories 教養科目カテゴリ
+     * @returns 科目＋履修登録状況＋時間割のリスト
+     */
+    @get list(
+      @query q?: string,
+      @query grades?: DottoFoundationV1.Grade[],
+      @query courses?: DottoFoundationV1.Course[],
+      @query classes?: DottoFoundationV1.Class[],
+      @query classifications?: DottoFoundationV1.SubjectClassification[],
+      @query year?: integer,
+      @query semesters?: DottoFoundationV1.CourseSemester[],
+      @query requirementTypes?: DottoFoundationV1.SubjectRequirementType[],
+
+      @query
+      culturalSubjectCategories?: DottoFoundationV1.CulturalSubjectCategory[],
+    ): (OkResponse &
+      Body<{
+        subjects: RegistrableSubject[];
+      }>) | UnauthorizedResponse;
+  }
+
+  @useAuth([BearerAuth, FoundationV1.FirebaseAppCheckAuth])
   @route("/v1/cancelledClasses")
   @tag("CancelledClasses")
   interface CancelledClassesV1 {
