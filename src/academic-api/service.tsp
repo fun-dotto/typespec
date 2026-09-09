@@ -135,8 +135,11 @@ namespace AcademicService {
      * 履修登録画面用に、科目検索結果と履修登録状況・時間割をまとめて取得する
      *
      * 同一項目同士はOR、異なる項目同士はANDでフィルタリングされます。
+     * ゲスト(未ログイン)からも呼び出される想定のため、userIdは省略可能とする。
+     * userIdを指定しない場合、各科目のisRegisteredは全てfalseになる
+     * (slotsはuserIdに関わらず常に計算する)
      *
-     * @param userId ユーザーID
+     * @param userId ユーザーID; 省略した場合isRegisteredは全てfalseになる
      * @param q 検索ワード
      * @param grades 学年
      * @param courses コース; 大学院の場合は大学院コースに読み替え
@@ -149,7 +152,7 @@ namespace AcademicService {
      * @returns 科目＋履修登録状況＋時間割のリスト
      */
     @get list(
-      @query userId: string,
+      @query userId?: string,
       @query q?: string,
       @query grades?: DottoFoundationV1.Grade[],
       @query courses?: DottoFoundationV1.Course[],
