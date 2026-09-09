@@ -124,6 +124,11 @@ namespace AppBFFService {
      * 単位数
      */
     credit: integer;
+
+    /**
+     * 科目群・科目区分をもとに決定
+     */
+    requirements: AcademicService.SubjectRequirement[];
   }
 
   /**
