@@ -159,6 +159,9 @@ namespace AppBFFService {
      * 科目を検索する
      *
      * 同一項目同士はOR、異なる項目同士はANDでフィルタリングされます。
+     * 未ログインでも呼び出せる。slotsは認証状態によらず常に計算される。
+     * isRegisteredはBearerトークンが付与されている場合のみそのユーザー基準で計算し、
+     * トークンが無い場合は全科目でfalseを返す
      *
      * @param q 検索ワード
      * @param grades 学年

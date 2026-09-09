@@ -129,6 +129,18 @@ namespace AppBFFService {
      * 科目群・科目区分をもとに決定
      */
     requirements: AcademicService.SubjectRequirement[];
+
+    /**
+     * 履修登録済みかどうか
+     *
+     * 未ログインの場合は常にfalse
+     */
+    isRegistered: boolean;
+
+    /**
+     * 時間割上のコマ; 集中講義など時間割に含まれない場合は空配列
+     */
+    slots: DottoFoundationV1.TimetableSlot[];
   }
 
   /**
