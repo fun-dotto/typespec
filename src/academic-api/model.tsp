@@ -174,21 +174,6 @@ namespace AcademicService {
      * 科目詳細取得でのみ必須
      */
     requirements?: SubjectRequirement[];
-
-    /**
-     * 履修登録済みかどうか
-     *
-     * 科目一覧取得でのみ必須
-     * userIdを指定しない場合はfalse
-     */
-    isRegistered?: boolean;
-
-    /**
-     * 時間割上のコマ; 集中講義など時間割に含まれない場合は空配列
-     *
-     * 科目一覧取得でのみ必須
-     */
-    slots?: DottoFoundationV1.TimetableSlot[];
   }
 
   model SubjectFaculty {

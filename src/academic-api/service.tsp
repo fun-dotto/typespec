@@ -348,7 +348,6 @@ namespace AcademicService {
      * @param semesters 開講時期
      * @param requirementTypes 必修・選択・選択必修
      * @param culturalSubjectCategories 教養科目カテゴリ
-     * @param userId ユーザーID; 指定した場合、各科目にこのユーザーの履修登録済みかどうか(isRegistered)を付与する
      * @returns 科目のリスト
      */
     @get list(
@@ -364,8 +363,6 @@ namespace AcademicService {
 
       @query
       culturalSubjectCategories?: DottoFoundationV1.CulturalSubjectCategory[],
-
-      @query userId?: string,
     ): OkResponse &
       Body<{
         subjects: Subject[];
