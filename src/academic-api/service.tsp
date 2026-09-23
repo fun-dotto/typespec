@@ -43,13 +43,15 @@ namespace AcademicService {
 
     /**
      * 履修情報を作成する
+     *
+     * 同じユーザーと科目の履修情報が既に存在する場合は、エラーにせず既存の履修情報を200で返す。
      * @param body 作成する履修情報の情報
-     * @returns 作成された履修情報
      */
-    @post create(@body body: CourseRegistrationRequest): (CreatedResponse &
-      Body<{
-        courseRegistration: CourseRegistration;
-      }>) | BadRequestResponse;
+    @post create(@body body: CourseRegistrationRequest):
+      | CourseRegistrationCreatedResponse
+      | CourseRegistrationExistingResponse
+      | CourseRegistrationBadRequestResponse
+      | CourseRegistrationNotFoundResponse;
 
     /**
      * 履修情報を削除する
@@ -58,6 +60,28 @@ namespace AcademicService {
      */
     @delete delete(@path id: string): NoContentResponse | NotFoundResponse;
   }
+
+  @doc("新しく作成された履修情報")
+  model CourseRegistrationCreatedResponse {
+    ...CreatedResponse;
+    @body body: {
+      courseRegistration: CourseRegistration;
+    };
+  }
+
+  @doc("同じユーザーと科目の履修情報が既に存在していたため、既存の履修情報を返す")
+  model CourseRegistrationExistingResponse {
+    ...OkResponse;
+    @body body: {
+      courseRegistration: CourseRegistration;
+    };
+  }
+
+  @doc("リクエストの形式が不正（subjectId が UUID として不正な場合など）")
+  model CourseRegistrationBadRequestResponse is BadRequestResponse;
+
+  @doc("userId が指すユーザー、または subjectId が指す科目が存在しない")
+  model CourseRegistrationNotFoundResponse is NotFoundResponse;
 
   @route("/v1/faculties")
   @tag("Faculties")
