@@ -32,3 +32,6 @@ depends = ["watch", "preview"]
 
 [tasks.clean]
 run = "rm -rf ./tsp-output/schema"
+
+[tasks.rule-sync]
+run = "rulesync generate --targets claudecode,codexcli,copilot"
