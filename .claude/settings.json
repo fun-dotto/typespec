@@ -1,13 +1,9 @@
 {
   "defaultMode": "default",
-  "enabledMcpjsonServers": [
-    "dotto-notion"
-  ],
+  "enabledMcpjsonServers": ["dotto-notion"],
   "enabledPlugins": {
-    "code-review@claude-plugins-official": true,
     "codex@openai-codex": true,
-    "context7@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true
+    "context7@claude-plugins-official": true
   },
   "permissions": {
     "allow": [
@@ -65,13 +61,7 @@
       "Read(**/*.pfx)",
       "Read(**/.env)",
       "Read(**/.env.*)",
-      "Read(**/.envrc)",
-      "Write(**/.env)",
-      "Write(**/.env.*)",
-      "Write(**/.envrc)",
-      "Write(**/.claude/settings.json)",
-      "Write(**/.claude/settings.local.json)",
-      "Write(**/.codex/config.toml)"
+      "Read(**/.envrc)"
     ],
     "ask": [
       "Bash(rm *)",
