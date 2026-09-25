@@ -30,6 +30,20 @@ namespace AppBFFService {
     status: DottoFoundationV1.PersonalCalendarItemStatus;
   }
 
+  model RegistrableSubject {
+    subject: SubjectSummary;
+
+    /**
+     * 履修登録済みかどうか
+     */
+    isRegistered: boolean;
+
+    /**
+     * 時間割上のコマ; 集中講義など時間割に含まれない場合は空配列
+     */
+    slots: DottoFoundationV1.TimetableSlot[];
+  }
+
   model Room {
     id: string;
 
