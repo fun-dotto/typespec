@@ -13,7 +13,7 @@ jobs:
           github_token: ${{ github.token }}
           cache: true
       - name: Setup
-        run: mise run setup
+        run: mise run bootstrap
       - name: Compile
         run: mise run compile
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
