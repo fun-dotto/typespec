@@ -136,7 +136,7 @@ jobs:
           draft: true
           title: "Update OpenAPI schema"
           body: |
-            This PR updates the OpenAPI schema from [dotto-typespec](https://github.com/fun-dotto/dotto-typespec).
+            This PR updates the OpenAPI schema from [dotto-typespec](https://github.com/fun-dotto/typespec).
 
             Triggered by: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
           commit-message: "Update OpenAPI schema from dotto-typespec"
