@@ -6,32 +6,29 @@ node = "26.10.0"
 pnpm = "12.8.1"
 "npm:rulesync" = "24.0.0"
 
-[tasks.setup]
-description = "Install dependencies"
-run = "pnpm install"
+[tasks.bootstrap]
+run = [
+  { task = "rulesync" },
+  "pnpm install",
+]
+
+[tasks.rulesync]
+run = "rulesync generate"
 
 [tasks.compile]
-description = "Compile TypeSpec to OpenAPI schema"
 run = "pnpm compile"
 
 [tasks.watch]
-description = "Watch for changes and compile"
 run = "pnpm watch"
 
 [tasks.format]
-description = "Format the code"
 run = "pnpm format"
 
 [tasks.preview]
-description = "Preview the documentation"
 run = "pnpm preview"
 
 [tasks.watch-and-preview]
-description = "Watch for changes and preview the documentation"
 depends = ["watch", "preview"]
 
 [tasks.clean]
 run = "rm -rf ./tsp-output/schema"
-
-[tasks.rule-sync]
-run = "rulesync generate --targets claudecode,codexcli,copilot"

@@ -32,7 +32,7 @@ jobs:
           github_token: ${{ github.token }}
           cache: true
       - name: Setup
-        run: mise setup
+        run: mise run bootstrap
       - name: Compile
         run: mise run compile
 
@@ -46,7 +46,7 @@ jobs:
           github_token: ${{ github.token }}
           cache: true
       - name: Setup
-        run: mise setup
+        run: mise run bootstrap
       - name: Run format
         run: mise run format
       - name: Verify no diff

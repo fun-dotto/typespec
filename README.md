@@ -3,7 +3,7 @@
 ## Setup
 
 ```zsh
-mise setup
+mise run bootstrap
 ```
 
 &copy; 2026 Dotto
