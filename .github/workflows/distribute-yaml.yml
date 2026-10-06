@@ -50,8 +50,6 @@ jobs:
                 target: api/openapi/announcement/openapi.yaml
               - source: tsp-output/schema/openapi.AppBFFService.yaml
                 target: api/openapi/app/openapi.yaml
-              - source: tsp-output/schema/openapi.FunchService.yaml
-                target: api/openapi/funch/openapi.yaml
               - source: tsp-output/schema/openapi.UserService.yaml
                 target: api/openapi/user/openapi.yaml
     steps:
