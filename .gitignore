@@ -8,12 +8,10 @@ dist/
 # Dependency directories
 node_modules/
 
-AGENTS.md
-CLAUDE.md
+**/AGENTS.md
+**/CLAUDE.md
 .claude/*
-!.claude/settings.json
 .codex/*
-!.codex/config.toml
 .github/*
 !.github/actions/
 !.github/workflows/
