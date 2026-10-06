@@ -3,8 +3,8 @@ minimum_release_age = "7d"
 
 [tools]
 node = "26.10.0"
-pnpm = "12.7.0"
-"npm:rulesync" = "23.0.0"
+pnpm = "12.8.1"
+"npm:rulesync" = "24.0.0"
 
 [tasks.setup]
 description = "Install dependencies"
