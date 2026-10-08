@@ -348,6 +348,8 @@ namespace AcademicService {
      * @param semesters 開講時期
      * @param requirementTypes 必修・選択・選択必修
      * @param culturalSubjectCategories 教養科目カテゴリ
+     * @param userId ユーザーID; 指定し、かつ xFlags で subject_sort_by_user_attributes=true の場合はユーザーのコース・学年に近い順にソートする
+     * @param xFlags フィーチャーフラグ; `name=true,name2=false` のカンマ区切り
      * @returns 科目のリスト
      */
     @get list(
@@ -363,6 +365,9 @@ namespace AcademicService {
 
       @query
       culturalSubjectCategories?: DottoFoundationV1.CulturalSubjectCategory[],
+
+      @query userId?: string,
+      @header("X-Flags") xFlags?: string,
     ): OkResponse &
       Body<{
         subjects: Subject[];
@@ -409,11 +414,15 @@ namespace AcademicService {
      *
      * @param year 開講年度; 指定しない場合は今年度が選択される
      * @param semesters 開講時期; 指定された時期に開講される全ての科目が取得される
+     * @param userId ユーザーID; 指定し、かつ xFlags で subject_sort_by_user_attributes=true の場合はユーザーのコース・学年に近い順にソートする
+     * @param xFlags フィーチャーフラグ; `name=true,name2=false` のカンマ区切り
      * @returns 時間割のリスト
      */
     @get list(
       @query year?: integer,
       @query semesters: DottoFoundationV1.CourseSemester[],
+      @query userId?: string,
+      @header("X-Flags") xFlags?: string,
     ): OkResponse &
       Body<{
         timetableItems: TimetableItem[];
